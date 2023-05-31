@@ -5,14 +5,18 @@ namespace Wpf_HW_Sample_MVC
 {
     public class Controller
     {
-        private DB dB = new DB();
+        private readonly DB _dB = new DB();
 
-        public void AddPersonToDB(string name, int age) => dB.AddPerson(new Person(name, age));
 
-        public List<Person> GetAll() => dB.GetPersons();
+        public Controller() { }
 
-        public List<Person> SearchPersons(string name) => dB.GetPersons(name);
 
-        public void Delete(Person person) => dB.DeletePerson(person);
+        public void AddPersonToDB(string name, int age) => _dB.AddPerson(new Person(name, age));
+
+        public List<Person> GetAll() => _dB.GetPersons();
+
+        public List<Person> SearchPersons(string name) => _dB.GetPersons(name);
+
+        public void Delete(Person person) => _dB.DeletePerson(person);
     }
 }

@@ -8,19 +8,19 @@ namespace Wpf_HW_Sample_MVC.Models
 {
     internal class DB
     {
-        private List<Person> persons;
+        private readonly List<Person> _persons;
 
-        public DB() => persons = new List<Person>();
+        public DB() => _persons = new List<Person>();
 
-        public void AddPerson(Person person) => persons.Add(person);
+        public void AddPerson(Person person) => _persons.Add(person);
 
-        public List<Person> GetPersons() => persons;
+        public List<Person> GetPersons() => _persons;
 
         public List<Person> GetPersons(string Name)
         {
             List<Person> result = new List<Person>();
 
-            var res = from person in persons
+            var res = from person in _persons
                       where person.Name == Name
                       select person;
 
@@ -30,6 +30,6 @@ namespace Wpf_HW_Sample_MVC.Models
             return result;
         }
 
-        public void DeletePerson(Person person) => persons.Remove(person);
+        public void DeletePerson(Person person) => _persons.Remove(person);
     }
 }
